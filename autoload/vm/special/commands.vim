@@ -319,22 +319,22 @@ fun! vm#special#commands#search(l1, l2, pattern) abort
   let pos = getcurpos()[1:2]
   let view = winsaveview()
   try
-    call vm#init_buffer(1)
+    call vm#init_buffer()
     let g:Vm.extend_mode = 1
     if search(pat, 'n')
-      call s:V.Search.get_slash_reg(pat)
+      call s:V.Search.slash_reg(pat)
     else
       throw 'not found'
     endif
     if a:l1 == 1 && a:l2 == line('$')
-      call vm#commands#find_next(0, 0)
-      let r = vm#commands#find_all(0, 0)
+      call g:Vm.cmd.find_next(0, 0)
+      let r = g:Vm.cmd.find_all(0, 0)
     elseif a:l1 != a:l2
       let start = line2byte(a:l1)
       let end = line2byte(a:l2) + col([a:l2, '$']) - 1
       let r = s:G.get_all_regions(start, end)
     else
-      let r = vm#commands#find_next(0, 0)
+      let r = g:Vm.cmd.find_next(0, 0)
     endif
     call winrestview(view)
     call s:G.select_region_at_pos([r.l, r.a])
