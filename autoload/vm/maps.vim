@@ -261,12 +261,12 @@ fun! s:assign(plug, key, buffer, ...) abort
             " Handle Neovim mappings with Lua functions as rhs
             let rhs = has_key(K, 'rhs') ? K.rhs : '<Lua callback>'
             if m != 'i'
-                let s = b.'Could not map: '.k.' ('.a:plug.')  ->  ' . rhs
-                call add(b:VM_Debug.lines, s)
+                " let s = b.'Could not map: '.k.' ('.a:plug.')  ->  ' . rhs
+                " call add(b:VM_Debug.lines, s)
                 return ''
             else
-                let s = b.'Overwritten imap: '.k.' ('.a:plug.')  ->  ' . rhs
-                call add(b:VM_Debug.lines, s)
+                " let s = b.'Overwritten imap: '.k.' ('.a:plug.')  ->  ' . rhs
+                " call add(b:VM_Debug.lines, s)
             endif
         endif
     endif
