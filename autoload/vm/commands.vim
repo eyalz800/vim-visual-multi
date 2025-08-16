@@ -668,8 +668,8 @@ fun! vm#commands#align_char(count) abort
     let C = []
     while n
         let c = nr2char(getchar())
-        if c == "\<esc>" | echohl WarningMsg | echon ' ...Aborted' | return
-        else             | call add(C, c) | let n -= 1 | echon c
+        if c == "\<esc>" | echohl WarningMsg | return
+        else             | call add(C, c) | let n -= 1
         endif
     endwhile
 
@@ -700,7 +700,7 @@ fun! vm#commands#align_regex() abort
     call s:F.Scroll.get(1)
 
     echohl Label | let rx = input('Align with regex > ')   | echohl None
-    if empty(rx) | echohl WarningMsg | echon ' ...Aborted' | return | endif
+    if empty(rx) | echohl WarningMsg | return | endif
 
     for r in s:R()
         call cursor(r.l, r.a)

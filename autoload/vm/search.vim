@@ -269,7 +269,6 @@ fun! s:Search.menu() abort
     echohl WarningMsg | echo "6 - " | echohl Type | echon "Remove Search Regions" | echohl None
     echohl Directory | echo "Enter an option: " | echohl None
     let c = nr2char(getchar())
-    echon c "\t"
     if c == 1
         call self.rewrite(1)
     elseif c == 2

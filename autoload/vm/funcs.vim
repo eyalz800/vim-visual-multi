@@ -234,7 +234,6 @@ endfun
 
 fun! s:add_char(c)
   let s:chars .= nr2char(a:c)
-  echon nr2char(a:c)
 endfun
 
 fun! s:ask_char()
